@@ -16,4 +16,5 @@
     # left(i) = 2i, right(i) = 2i + 1
 # Max heap property
     # the key of a node is greater or equal to the keys of its children
-    
+# Min heap property
+    # the key ofa node is less or equal to the keys of its children
