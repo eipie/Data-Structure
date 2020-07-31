@@ -10,3 +10,10 @@
 # Heaps
 # An array visualized an nearly complete binary tree
 
+# Heaps on a tree
+    # root of the tree: first element (i = 1)
+    # parent(i) = i / 2
+    # left(i) = 2i, right(i) = 2i + 1
+# Max heap property
+    # the key of a node is greater or equal to the keys of its children
+    
