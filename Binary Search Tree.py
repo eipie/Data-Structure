@@ -19,64 +19,6 @@
 # Preorder tree walk: prints the root before the values in either subtree
 # Postorder tree walk: prints the root after the values in its subtrees
 
-class Node:
-    def __init___(self, key, data, left, right, pointer):
-        self.key = key
-        self.data = data
-        self.left = null
-        self.right = null
-        self.pointer = null
-
-    # Inorder tree walk psedocode
-    def inorderTreeWalk(self):
-        if self is not null:
-            inorderTreeWalk(self.left)
-            print(self.key)
-            inorderTreeWalk(self.right)
-
-    # Tree search psedocode (with recursion)
-    def treeSearch(self, k):
-        if self.data is null or k == self.key:
-            return self.data
-        if k < x.key:
-            return treeSearch(self.left, k)
-        else:
-            return treeSearch(self.right, k)
-
-    # Tree search psedocode (with iteration)
-    def treeSearchV2(self, k):
-        while self.data is not null and k != self.key:
-            if k < self.key:
-                self.data = self.data.left
-            else:
-                self.data = self.data.right
-        return self.data
-
-    # Finding the max psedocode
-    def Max(self):
-        currNode = self.data
-        while currNode is not null:
-            currNode = self.data.left
-        return currNode
-    
-    # Finding the min psedecode
-    def Min(self):
-        currNode = self.data
-        while currNode is not null:
-            currNode = self.data.right
-        return currNode
-
-    def Min(self):
-        currNode = self.data
-        while currNode is not null:
-            currNode = self.data.left
-        return currNode
-    
-    def findSuccessor(self):
-        if self.right is null:
-            return Min(self.right)
-
-
 # Binary Search Tree Query
 # Search Algorithm
     # Given the a pointer to the root of the tree and a key k, tree-search
@@ -90,5 +32,62 @@ class Node:
 # Successor and Predessor
     # The successor of a node is the node with the smallest key greater than the node's key
 
+# Insertion and deletion
 
+# -------------------------------------------------------------------------------------------------------------
+# Implementation
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+class Tree:
+    def __init__(self):
+        self.root = None
+    
+    def add(self, item):
+        newNode = Node(item)
+        if self.root is None:
+            self.root = newNode
+            return 
+        queue = [self.root]
+        while len(queue) != 0:
+            currentNode = queue.pop(0)
+            if currentNode.left is None:
+                currentNode.left = newNode
+                return
+            else:
+                queue.append(currentNode.left)
+            if currentNode.right is None:
+                currentNode.right = newNode
+                return
+            else:
+                queue.append(currentNode.right)
+
+    def breadthTraveral(self):
+        if self.root is None:
+            return 
+        queue = [self.root]
+        while queue:
+            currentNode = queue.pop(0)
+            print(currentNode.data)
+            if currentNode.left is not None:
+                queue.append(currentNode.left)
+            if currentNode.right is not None:
+                queue.append(currentNode.right)
+
+newTree = Tree()
+newTree.add(1)
+newTree.add(2)
+newTree.add(3)
+newTree.add(4)
+newTree.add(5)
+newTree.add(6)
+newTree.breadthTraveral()
+
+
+            
+
+        
 
