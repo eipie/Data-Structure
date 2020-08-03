@@ -30,5 +30,10 @@ class BinarySearchTree:
                 currentNode.right = newNode
                 return
 
+newTree = BinarySearchTree()
+newTree.add(5)
+newTree.add(3)
+newTree.add(10)
+
                 
         
