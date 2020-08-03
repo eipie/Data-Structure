@@ -4,8 +4,6 @@
     # Binary search tree is a particular type of binary tree, where in any node, 
     # the left child of the node is always greater and the right
     # child is always smaller than the node
-
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -16,24 +14,44 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def add(self, data):
-        newNode = Node(data)
+    def insert(self, data):
         if self.root is None:
-            self.root = newNode
-            return
-        currentNode = self.root
-        while currentNode is not None:
-            if newNode.data < currentNode.left and currentNode.left is None:
-                currentNode.left = newNode
-                return
+            self.root = Node(data)
+        else:
+            self._insert(data, self.root)
+
+    def _insert(self, data, currentNode):
+        if data < currentNode.data:
+            if currentNode.left is None:
+                currentNode.left = Node(data)
             else:
-                currentNode.right = newNode
-                return
+                self._insert(data, currentNode.left)
+        if data > currentNode.data:
+            if currentNode.right is None:
+                currentNode.right = Node(data)
+            else:
+                self._insert(data, currentNode.right)
 
+    def print_tree(self):
+        if self.root is not None:
+            self._print_tree(self.root)
+        
+    def _print_tree(self, currentNode):
+        if currentNode is not None:
+            self._print_tree(currentNode.left)
+            print(str(currentNode.data))
+            self._print_tree(currentNode.right)
+
+    def height(self):
+        if self.root is None:
+            return 0
+        
 newTree = BinarySearchTree()
-newTree.add(5)
-newTree.add(3)
-newTree.add(10)
+arr = [33, 1, 45]
+for a in arr:
+    newTree.insert(a)
 
-                
+
+
+
         
