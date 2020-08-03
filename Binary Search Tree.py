@@ -21,4 +21,14 @@ class BinarySearchTree:
         if self.root is None:
             self.root = newNode
             return
+        currentNode = self.root
+        while currentNode is not None:
+            if newNode.data < currentNode.left and currentNode.left is None:
+                currentNode.left = newNode
+                return
+            else:
+                currentNode.right = newNode
+                return
+
+                
         
