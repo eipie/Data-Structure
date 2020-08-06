@@ -16,4 +16,8 @@
 #     A "random"-looking hash function can minimize the number of collions
 # 4. Collision resolution by chaining
 #     In chaining, we place all the elements that has to the same slot into the same
+<<<<<<< HEAD
 #     linked list
+=======
+#     linked list
+>>>>>>> a6c63ae5b8cf9e965afc766923d7a937d12b9275
