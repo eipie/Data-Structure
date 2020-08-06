@@ -9,7 +9,7 @@
     # Capable of storing large amount of data
     # Uses a hash function h(k) to computer the slot from the key
     # the average-case performance of hasing depends on how well the hash function h 
-    # distributes the set of keys to be stored among the m slots
+    # dis
     
 # 3. Collision
     # When two keys hash to the same slot, the situation is called a collions
