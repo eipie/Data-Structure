@@ -49,6 +49,15 @@ class Hash:
     def delete(self):
         return 
     
+# Testing
+# Creating a new hash table
 newTable = Hash(10)
+
+# Insert a new data into the hash table
 newTable.insert(25)
+
+# Trying to search an inserted data in the table
+print(newTable.search(25))
+
+# Trying to search an uninserted data in the table
 print(newTable.search(10))
