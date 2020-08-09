@@ -15,7 +15,6 @@ class Node:
     def getNext(self):
         return self.next
 
-    
 class Hash:
     def __init__(self, slots):
         self.table = [None] * slots
