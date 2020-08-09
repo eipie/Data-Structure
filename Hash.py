@@ -21,7 +21,7 @@ class Hash:
         self.slots = slots 
 
     def insert(self, data):
-        i = data % slots
+        i = data % self.slots
         newNode = Node(data)
         if self.table[i] is None:
             self.table[i] = newNode
@@ -33,12 +33,22 @@ class Hash:
             head.set_next(newNode)
             return True 
 
-    def search(self):
-        return
+    def search(self, data):
+        i = data % self.slots
+        if self.table[i] is None:
+            return False
+        else:
+            currentNode = self.table[i]
+            while currentNode is not None:
+                if currentNode.get() == data:
+                    return True
+                else:
+                    currentNode = currentNode.get()
+        return False
 
     def delete(self):
         return 
     
-
-
-        
+newTable = Hash(10)
+newTable.insert(25)
+print(newTable.search(10))
