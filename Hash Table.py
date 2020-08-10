@@ -43,12 +43,23 @@ class Hash:
                 if currentNode.get() == data:
                     return True
                 else:
-                    currentNode = currentNode.get()
+                    currentNode = currentNode.getNext()
         return False
 
-    def delete(self):
-        return 
-    
+    def delete(self, data):
+        if self.search(data) == False:
+            return False
+        else:
+            i = data % self.slots
+            currentNode = self.table[i]
+            while currentNode is not None:
+                if currentNode.get() == data:
+                    currentNode.data = None
+                    print("Item " + str(data) + " has been deleted")
+                    return True
+                else:
+                    currentNode = currentNode.getNext()
+        
 # Testing
 # Creating a new hash table
 newTable = Hash(10)
@@ -56,8 +67,14 @@ newTable = Hash(10)
 # Insert a new data into the hash table
 newTable.insert(25)
 
-# Trying to search an inserted data in the table
+# Search an inserted data in the table
 print(newTable.search(25))
 
-# Trying to search an uninserted data in the table
+# Search an uninserted data in the table
 print(newTable.search(10))
+
+# Delete a node from the table
+newTable.delete(25)
+
+# Search the deleted node
+print(newTable.search(25))
