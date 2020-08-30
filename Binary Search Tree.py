@@ -10,7 +10,7 @@
     # of x, then y.key <= x,key. If y is a node in the right subtree of x, then
     # y.key >= x.key
 
-# Successor and Predessor
+# Successor and Predecessor
     # The successor of a node is the node with the smallest key greater than the node's key
 
 # 2. Binary search tree algorithms
