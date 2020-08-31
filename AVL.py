@@ -11,6 +11,7 @@
 #     - each node stores its height
 
 import BST
+
 def height(node):
     if node is None:
         return -1
