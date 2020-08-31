@@ -10,25 +10,74 @@
 #     - treat nill tree as height -1
 #     - each node stores its height
 
-import Graphs
-import random
-import math
+import BST
+def height(node):
+    if node is None:
+        return -1
+    else:
+        return node.height
 
-class AVL(self):
-    def __init__(self):
-        return
+def updateHeight(node):
+    return max(height(node.left), height(node.right)) + 1
 
-    def leftRotate(self):
-        return
+class AVL(BST.BST):
+    def leftRotate(self, x):
+        y = x.right
+        y.parent = x.parent
+        if y.parent is None:
+            self.root = y
+        else:
+            if y.parent.left is x:
+                y.parent.left = y
+            elif y.parent.right is x:
+                y.parent.right = y
+        x.right = y.left
+        if x.right is not None:
+            x.right.parent = x
+        y.left = x
+        x.parent = y
+        updateHeight(x)
+        updateHeight(y)
 
-    def rightRotate(self):
-        return
+    def rightRotate(self, x):
+        y = x.left
+        y.parent = x.parent
+        if y.parent is None:
+            self.root = y
+        else:
+            if y.parent.left is x:
+                y.parent.left = y
+            elif y.parent.right is x:
+                y.parent.right = y
+        x.left = y.right
+        if x.left is not None:
+            x.left.parent = x
+        y.right = x
+        x.parent = y
+        updateHeight(x)
+        updateHeight(y)
 
-    def rebalance(self):
-        return
+    def rebalance(self, node):
+        while node is not None:
+            updateHeight(node)
+            if height(node.left) >= 2 + height(node.right):
+                if height(node.left.left) >= height(node.left.right):
+                    self.rightRotate(node)
+                else:
+                    self.leftRotate(node.left)
+                    self.rightRotate(node)
+            elif height(node.right) >= 2 + height(node.left):
+                if height(node.right.right) >= height(node.right.left):
+                    self.leftRotate(node)
+                else:
+                    self.rightRotate(node.right)
+                    self.leftRotate(node)
+            node = node.parent
 
-    def insert(self):
-        return
+    def insert(self, k):
+        node = super(AVL, self).insert(k)
+        self.rebalance(node)
 
-    def delete(self):
-        return 
+    def delete(self, k):
+        node = super(AVL, self).delete(k)
+        self.rebalance(node.parent)
