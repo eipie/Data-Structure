@@ -182,8 +182,6 @@ class BST():
         return self.root and self.root.find(k)
                 
     def find_min(self):
-        """Returns the minimum node of this BST."""
-        
         return self.root and self.root.find_min()
     
     def insert(self, k):
@@ -218,7 +216,7 @@ class BST():
     def check_ri(self):
         if self.root is not None:
             if self.root.parent is not None:
-                raise RuntimeError("BST RI violated by the root node's parent " 
-                                   "pointer.")
+                raise RuntimeError()
             self.root.check_ri()
+
     
