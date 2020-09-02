@@ -1,7 +1,16 @@
 # van Emde Boas Tree implementation on insert, delete and successor
 
+def high(U, x):
+	return x//U^(1/2)
+
+def low(U, x):
+	return U^(1/2)
+
+def index(U, i, j):
+	return i * U^(1/2) + j
+
 # Maintain min and max of every structure
-Successor(V, x):
+def Successor(V, x):
 	i = high(x)
 	if low(x) < V.cluster[i].max:
 		j = Successor(V.cluster[i].low(x))
@@ -13,7 +22,7 @@ Successor(V, x):
 # T(n) = O(log(log(u)))
 
 # Don't store min recursively
-Insert(V, x):
+def Insert(V, x):
 	if V.min is None:
 		V.min = V.max = x
 		return
@@ -27,18 +36,18 @@ Insert(V, x):
 
 # T(u) = O(log(log(u)))
 
-Delete(V, x):
+def Delete(V, x):
 	if x == V.min:
 		i = V.summary.min
 		if i is None:
 			V.min = V.max = None
 		 	return
-		 x = V.min = index(i, V.cluster[i].min)
+		x = V.min = index(i, V.cluster[i].min)
 	Delete(V.cluster[high(x)], low(x))
 	if V.cluster[high(x)].min is None:
 		Delete(V.summary, high(x))
 	if x == V.max:
-		if V.summary.max = None:
+		if V.summary.max is None:
 			V.max = V.min
 		else:
 			i = V.summary.max
