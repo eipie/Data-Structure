@@ -15,7 +15,7 @@ def Successor(V, x):
 	if low(x) < V.cluster[i].max:
 		j = Successor(V.cluster[i].low(x))
 	else:
-		i = Success(V.summary, high(x))
+		i = Successor(V.summary, high(x))
 		j = V.cluster[i].min
 	return index(i, j)
 
@@ -32,7 +32,7 @@ def Insert(V, x):
 		V.max = x
 	if V.cluster[high(x)].min is None:
 		Insert(V.summary, high(x))
-	insert(V.cluster[high(x)], low(x))
+	Insert(V.cluster[high(x)], low(x))
 
 # T(u) = O(log(log(u)))
 
